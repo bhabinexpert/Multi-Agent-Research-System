@@ -16,6 +16,16 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 /* ── Reset & base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 html, body, [class*="css"] {
     font-family: 'DM Sans', sans-serif;
     color: #e8e4dc;
@@ -30,7 +40,11 @@ html, body, [class*="css"] {
 
 /* ── Hide default streamlit chrome ── */
 #MainMenu, footer, header { visibility: hidden; }
-.block-container { padding: 2rem 3rem 4rem; max-width: 1200px; }
+.block-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem 3rem 4rem;
+}
 
 /* ── Hero header ── */
 .hero {
@@ -55,7 +69,8 @@ html, body, [class*="css"] {
     line-height: 1.0;
     letter-spacing: -0.03em;
     color: #f0ebe0;
-    white-space: nowrap;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     margin: 0 0 1rem;
 }
 .hero h1 span {
@@ -286,6 +301,31 @@ details summary {
     text-align: center;
     margin-top: 3rem;
     letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1.25rem 1rem 3rem;
+    }
+
+    .hero {
+        padding: 2.5rem 0 1.75rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 11vw, 4rem);
+        line-height: 1.05;
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
+    }
+
+    .input-card,
+    .report-panel,
+    .feedback-panel {
+        padding: 1.25rem;
+    }
 }
 
 </style>
